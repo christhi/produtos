@@ -1,0 +1,78 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="cris.com.Produtos.controller.Detalhes">
+	<App>
+		<pages>
+			<Page title="Detalhes do Produto" 
+				  showNavButton="true" 
+				  navButtonPress="onNavBack">
+				<content>
+				    <ObjectHeader xmlns="sap.m" title="{ProductName}" number="{ parts: [{path: 'UnitPrice'}, ''],type: 'sap.ui.model.type.Currency',formatOptions: {showMeasure:false}}" numberUnit="BRL" id="header0" intro="Categoria: {Category/CategoryName}" icon="sap-icon://product">
+				        <statuses>
+				            <ObjectStatus text="{UnitsInStock}" state="{= ${UnitsInStock} &gt; 50 ? 'Warning' : 'None' }" id="status0"/>
+				            <ObjectStatus xmlns="sap.m" text="{= ${Discontinued} ? 'Descontinuado' : 'Ativo' }" state="{= ${Discontinued} ? 'Error' : 'Success' }" id="status1"/>
+				            </statuses>
+				        <attributes>
+				            <ObjectAttribute text="Qtde por Unidade: {QuantityPerUnit}" id="attribute0"/>
+				            <ObjectAttribute text="Descrição: {Category/Description}" id="attribute1"/>
+				            </attributes>
+				        </ObjectHeader>
+				    <IconTabBar id="bar0">
+				        <items>
+				            <IconTabFilter text="Fornecedor" icon="sap-icon://supplier" iconColor="Critical" id="filter1">
+				                <content>
+				                    <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="idSimpleForm">
+				                        <sap.ui.layout.form:content>
+				                            <Label text="Empresa" id="label0"/>
+				                            <Text xmlns="sap.m" text="{CompanyName}" id="text8"/>
+				                            <Label text="Contato" width="100%" id="label5"/>
+				                            <Text xmlns="sap.m" text="{ContactName}" id="text9"/>
+				                            <Label text="Telefone" width="100%" id="label6"/>
+				                            <Text xmlns="sap.m" text="{Phone}" id="text10"/>
+				                            <Label text="Endereço" width="100%" id="label7"/>
+				                            <Text xmlns="sap.m" text="{Address}" id="text11"/>
+				                            <Label text="Cidade" width="100%" id="label8"/>
+				                            <Text xmlns="sap.m" text="{City}" id="text12"/></sap.ui.layout.form:content>
+				                    </sap.ui.layout.form:SimpleForm>
+				                </content>
+				            </IconTabFilter>
+				            <IconTabFilter text="Vendas" icon="sap-icon://sales-order-item" iconColor="Positive" id="filter2">
+				                <content>
+				                    <Table items="{Order_Details}" 
+				                    	   noDataText="Drop column list items here and columns in the area above" id="table0">
+				                        <items>
+				                            <ColumnListItem type="Active" id="item0">
+				                                <cells>
+				                                    <Text text="{OrderID}" id="text5"/>
+				                                    <Text text="{UnitPrice}" id="text6"/>
+				                                    <Text text="{Quantity}" id="text7"/>
+				                                    <Text xmlns="sap.m" text="{Discount}" id="text9_1584533593404"/></cells>
+				                            </ColumnListItem>
+				                        </items>
+				                        <columns>
+				                            <Column id="column0">
+				                                <header>
+				                                    <Label text="ID Ordem" id="label0_1584533411362"/>
+				                                </header>
+				                            </Column>
+				                            <Column id="column1">
+				                                <header>
+				                                    <Label text="Preço Unitário" id="label1"/>
+				                                </header>
+				                            </Column>
+				                            <Column id="column2">
+				                                <header>
+				                                    <Label text="Quantidade" id="label2"/>
+				                                </header>
+				                            </Column>
+				                            <Column id="column3">
+				                                <header>
+				                                    <Text text="Desconto" id="text8_1584533551369"/>
+				                                </header>
+				                            </Column></columns></Table>
+				                </content>
+				            </IconTabFilter></items>
+				    </IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
